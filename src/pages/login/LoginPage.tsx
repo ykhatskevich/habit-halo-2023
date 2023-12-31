@@ -1,8 +1,5 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { openModal, closeModal } from "../../redux/slices/modalSlice";
-import { RootState } from "../../redux/store";
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
@@ -11,9 +8,11 @@ import { loginSchema } from "../../validation/validationSchemas";
 import Modal from "../../elements/modal/Modal";
 import { Card } from "../../elements/Card";
 import { Container } from "./LoginPage.styles";
+import useModal from "../../custom hooks/useModal";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const { isModalOpen, handleOpenModal, handleCloseModal } = useModal();
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -28,16 +27,6 @@ const LoginPage = () => {
     password: "",
   };
 
-  const dispatch = useDispatch();
-  const isModalOpen = useSelector((state: RootState) => state.modal.isOpen);
-
-  const handleOpenModal = () => {
-    dispatch(openModal());
-  };
-
-  const handleCloseModal = () => {
-    dispatch(closeModal());
-  };
   const onSubmit = async (
     values: LoginFormValues,
     { setFieldError }: FormikHelpers<LoginFormValues>
