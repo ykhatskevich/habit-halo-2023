@@ -8,4 +8,5 @@ export const Card = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 400px;
   margin-right: 10%;
+  z-index: 2;
 `;

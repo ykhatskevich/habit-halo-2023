@@ -1,3 +1,4 @@
+import { GlobalStyle } from "./styles/global";
 import { Routes, Route } from "react-router-dom";
 import { HOME, REGISTER, MAIN } from "./configuration/routePaths";
 
@@ -7,11 +8,14 @@ import MainPage from "./pages/main/MainPage.tsx";
 
 function App() {
   return (
-    <Routes>
-      <Route path={HOME} element={<LoginPage />} />
-      <Route path={REGISTER} element={<RegistrationPage />} />
-      <Route path={MAIN} element={<MainPage />} />
-    </Routes>
+    <>
+      <GlobalStyle />
+      <Routes>
+        <Route path={HOME} element={<LoginPage />} />
+        <Route path={REGISTER} element={<RegistrationPage />} />
+        <Route path={MAIN} element={<MainPage />} />
+      </Routes>
+    </>
   );
 }
 

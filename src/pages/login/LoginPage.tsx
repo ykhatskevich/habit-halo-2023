@@ -7,7 +7,7 @@ import { LoginFormValues } from "./login interfaces";
 import { loginSchema } from "../../validation/validationSchemas";
 import Modal from "../../elements/modal/Modal";
 import { Card } from "../../elements/Card";
-import { Container } from "./LoginPage.styles";
+import { Container, BackgroundImage } from "./LoginPage.styles";
 import useModal from "../../custom hooks/useModal";
 
 const LoginPage = () => {
@@ -47,6 +47,7 @@ const LoginPage = () => {
 
   return (
     <Container>
+      <BackgroundImage />
       <Card>
         <h1>Log In</h1>
         <h3>Please enter your details to login</h3>
